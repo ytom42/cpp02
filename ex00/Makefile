@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ytomiyos <ytomiyos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/12 08:44:19 by ytomiyos          #+#    #+#              #
-#    Updated: 2021/11/13 12:34:36 by ytomiyos         ###   ########.fr        #
+#    Updated: 2022/04/21 17:33:05 by ytomiyos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX = clang++
+CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
+# CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP -pedantic
 
 NAME = fixed
 
