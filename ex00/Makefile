@@ -12,26 +12,25 @@
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
-# CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP -pedantic
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -MMD -MP
 
 NAME = fixed
 
-SRCS =	main.cpp \
-		Fixed.cpp
+SRCS = Fixed.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
+DEPS = $(SRCS:.cpp=.d)
 
-%.o: %.cpp Fixed.hpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+-include $(DEPS)
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME): $(OBJS)
 		$(CXX) $(CXXFLAGS) -o $@ $^
 
 clean:
 		rm -f *.o
+		rm -f *.d
 
 fclean:	clean
 		rm -f $(NAME)
@@ -39,3 +38,4 @@ fclean:	clean
 re:		fclean all
 
 .PHONY:	all clean fclean re
+

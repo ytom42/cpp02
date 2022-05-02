@@ -48,7 +48,8 @@ void	my_test()
 
 int main( void )
 {
-	// subject_test();
-	my_test();
+	subject_test();
+	// my_test();
 	return (0);
 }
+
