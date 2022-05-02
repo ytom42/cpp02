@@ -10,32 +10,33 @@
 #                                                                              #
 # **************************************************************************** #
 
-CXX = c++
-
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -MMD -MP
-
 NAME = fixed
 
-SRCS = Fixed.cpp main.cpp
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -MMD -MP
 
+SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
-DEPS = $(SRCS:.cpp=.d)
+DEPS = $(OBJS:.o=.d)
+
+
+.PHONY: all
+all : $(NAME)
 
 -include $(DEPS)
-
-all : $(NAME)
 
 $(NAME): $(OBJS)
 		$(CXX) $(CXXFLAGS) -o $@ $^
 
+.PHONY: clean
 clean:
 		rm -f *.o
 		rm -f *.d
 
+.PHONY: fclean
 fclean:	clean
 		rm -f $(NAME)
 
+.PHONY: re
 re:		fclean all
-
-.PHONY:	all clean fclean re
 

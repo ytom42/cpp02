@@ -26,13 +26,26 @@ void	subject_test()
 	std::cout << c.getRawBits() << std::endl;
 }
 
-void	my_test()
+void	my_test1()
+{
+	Fixed a;
+	Fixed b(a);
+	Fixed c(b);
+	Fixed d(c);
+
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	std::cout << d.getRawBits() << std::endl;
+}
+
+void	my_test2()
 {
 	Fixed a;
 	Fixed b;
 	Fixed c;
-	Fixed d( c );
-	Fixed e( b );
+	Fixed d;
+	Fixed e;
 
 	b = a;
 	c = b;
@@ -49,7 +62,8 @@ void	my_test()
 int main( void )
 {
 	subject_test();
-	// my_test();
+//	my_test1();
+//	my_test2();
 	return (0);
 }
 
