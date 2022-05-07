@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ytomiyos <ytomiyos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 10:06:56 by ytomiyos          #+#    #+#             */
-/*   Updated: 2021/11/12 22:59:38 by ytomiyos         ###   ########.fr       */
+/*   Created: 2021/11/12 08:46:28 by ytomiyos          #+#    #+#             */
+/*   Updated: 2022/04/21 17:36:38 by ytomiyos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 class Fixed {
 	private:
-		int _fixedPointValue;
-		static const int _fractionalBits = 8;
+		int value;
+		static const int fractionalBits = 8;
 	public:
 		Fixed( void );
 		Fixed( const Fixed &fixed );
@@ -33,3 +33,4 @@ class Fixed {
 std::ostream &operator<<( std::ostream &ostream, const Fixed &fixed );
 
 #endif
+
