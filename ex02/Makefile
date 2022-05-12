@@ -3,38 +3,40 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ytomiyos <ytomiyos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/12 10:06:15 by ytomiyos          #+#    #+#              #
-#    Updated: 2021/11/13 14:35:38 by ytomiyos         ###   ########.fr        #
+#    Created: 2021/11/12 08:44:19 by ytomiyos          #+#    #+#              #
+#    Updated: 2022/04/21 17:33:05 by ytomiyos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX = clang++
+NAME = fixed
 
-CXXFLAGS = -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -MMD -MP
 
-NAME = fixed3
-
-SRCS =	main.cpp \
-		Fixed.cpp
-
+SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
+DEPS = $(OBJS:.o=.d)
 
-%.o: %.cpp Fixed.hpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+.PHONY: all
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+-include $(DEPS)
+
+$(NAME): $(OBJS)
 		$(CXX) $(CXXFLAGS) -o $@ $^
 
+.PHONY: clean
 clean:
 		rm -f *.o
+		rm -f *.d
 
+.PHONY: fclean
 fclean:	clean
 		rm -f $(NAME)
 
+.PHONY: re
 re:		fclean all
 
-.PHONY:	all clean fclean re
